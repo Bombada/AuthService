@@ -1,0 +1,15 @@
+version: '3'
+services:
+  authDB:
+    image: library/mysql:5.7
+    container_name: auth
+    restart: always
+    ports:
+      - 3400:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: Asia/Seoul
+    volumes:
+      - ./db/mysql/data:/var/lib/mysql
+      - ./db/mysql/init:/docker-entrypoint-initdb.d
+    platform: linux/x86_64
